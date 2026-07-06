@@ -6,6 +6,40 @@
 <title>معملي — كيمياء تفاعلية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
+.beta-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff3cd; 
+    color: #856404;
+    text-align: center;
+    padding: 12px 20px; 
+    font-size: 14px;
+    font-weight: bold;
+    direction: rtl;
+    z-index: 99999; /* رقم فلكي عشان يضمن إنه فوق أي عنصر في موقعك */
+    border-bottom: 1px solid #ffeeba;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* أنيميشن ناعم وهو بيختفي */
+}
+
+/* لما المستخدم ينزل لتحت، الكلاس ده هيتضاف بالـ JS فيختفي البانر تماماً */
+.beta-banner.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body {
+    padding-top: 45px; /* عشان يعمل مسافة وميغطيش على الهيدر أول ما الموقع يفتح */
+}
+
+@media (max-width: 600px) {
+    .beta-banner { font-size: 11px; padding: 10px 12px; }
+    body { padding-top: 38px; }
+}
+
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{overflow-x:hidden;width:100%;max-width:100%}
 :root{
@@ -353,8 +387,8 @@ body::before{
 
 /* ── NOTIFICATION ── */
 .notif{
-  position:fixed;top:12px;left:50%;
-  transform:translateX(-50%) translateY(-90px);
+  position:fixed;top:55px;left:50%;
+  transform:translateX(-50%) translateY(-150px);
   background:var(--surface);color:var(--text);
   border:1.5px solid var(--primary);padding:.65rem 1.4rem;
   border-radius:12px;font-size:.84rem;font-weight:600;
@@ -2765,5 +2799,17 @@ renderConcepts();
 init();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+window.addEventListener('scroll', function() {
+    const banner = document.querySelector('.beta-banner');
+    if (window.scrollY > 20) {
+        banner.classList.add('hidden');
+    } else {
+        banner.classList.remove('hidden');
+    }
+});
+</script>
+
+  <div class="beta-banner">⚠️ هذه النسخة التجريبية الأولى | المعمل تحت التطوير المستمر... رأيك يهمنا!</div>
 </body>
 </html>
