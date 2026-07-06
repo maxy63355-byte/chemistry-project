@@ -6,41 +6,6 @@
 <title>معملي — كيمياء تفاعلية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* 1. البانر بيتحرك مع الصفحة على الكمبيوتر والموبايل */
-.beta-banner {
-    position: relative; /* 👈 بيتحرك ويطلع لفوق مع السكرول ومش ثابت */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff3cd; 
-    color: #856404;
-    text-align: center;
-    padding: 12px 20px; 
-    font-size: 14px;
-    font-weight: bold;
-    direction: rtl;
-    border-bottom: 1px solid #ffeeba;
-    z-index: 10;
-}
-
-/* لغينا أي padding-top للبودي عشان البانر بقا relative */
-body {
-    padding-top: 0px; 
-}
-
-/* 2. تظبيط المقاسات للموبايل */
-@media (max-width: 600px) {
-    .beta-banner {
-        font-size: 11px; 
-        padding: 10px 12px; 
-    }
-    
-    /* تظبيط مكان الرسالة التحذيرية عشان متبقاش راكبة فوق اللوجو في الموبايل */
-    .notif {
-        z-index: 10000;
-    }
-}
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{overflow-x:hidden;width:100%;max-width:100%}
 :root{
@@ -388,8 +353,8 @@ body::before{
 
 /* ── NOTIFICATION ── */
 .notif{
-  position:fixed;top:55px;left:50%;
-  transform:translateX(-50%) translateY(-150px);
+  position:fixed;top:12px;left:50%;
+  transform:translateX(-50%) translateY(-90px);
   background:var(--surface);color:var(--text);
   border:1.5px solid var(--primary);padding:.65rem 1.4rem;
   border-radius:12px;font-size:.84rem;font-weight:600;
@@ -2800,17 +2765,5 @@ renderConcepts();
 init();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-<script>
-window.addEventListener('scroll', function() {
-    const banner = document.querySelector('.beta-banner');
-    if (window.scrollY > 20) {
-        banner.classList.add('hidden');
-    } else {
-        banner.classList.remove('hidden');
-    }
-});
-</script>
-
-  <div class="beta-banner">⚠️ هذه النسخة التجريبية الأولى | المعمل تحت التطوير المستمر... رأيك يهمنا!</div>
 </body>
 </html>
