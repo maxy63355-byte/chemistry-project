@@ -6,46 +6,40 @@
 <title>معملي — كيمياء تفاعلية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* 1. التنسيق للكمبيوتر (يفضل ثابت فوق) */
+/* 1. البانر بيتحرك مع الصفحة على الكمبيوتر والموبايل */
 .beta-banner {
-    position: fixed;
+    position: relative; /* 👈 بيتحرك ويطلع لفوق مع السكرول ومش ثابت */
     top: 0;
     left: 0;
     width: 100%;
     background-color: #fff3cd; 
-    color: #856404; 
+    color: #856404;
     text-align: center;
-    padding: 10px 15px;
+    padding: 12px 20px; 
     font-size: 14px;
     font-weight: bold;
     direction: rtl;
-    z-index: 999; 
     border-bottom: 1px solid #ffeeba;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 10;
 }
 
+/* لغينا أي padding-top للبودي عشان البانر بقا relative */
 body {
-    padding-top: 45px; /* مسافة ثابتة للكمبيوتر فقط */
+    padding-top: 0px; 
 }
 
-/* 2. التنسيق الذكي للموبايل (يختفي عند النزول لتحت) */
+/* 2. تظبيط المقاسات للموبايل */
 @media (max-width: 600px) {
     .beta-banner {
-        position: absolute; /* 👈 غيرناه هنا للموبايل بس عشان يتحرك مع الصفحة وميفضلش كاتم على الشاشة */
         font-size: 11px; 
-        padding: 8px 10px; 
-        z-index: 10;
-    }
-    body {
-        padding-top: 0px; /* 👈 لغينا المسافة الزيادة في الموبايل عشان الهيدر والرسائل يرجعوا لمكانهم الطبيعي المستقر */
+        padding: 10px 12px; 
     }
     
-    /* رجوع الرسالة التحذيرية لوضعها الأصلي المستقر على الموبايل */
+    /* تظبيط مكان الرسالة التحذيرية عشان متبقاش راكبة فوق اللوجو في الموبايل */
     .notif {
-        z-index: 10000; 
+        z-index: 10000;
     }
 }
-
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{overflow-x:hidden;width:100%;max-width:100%}
